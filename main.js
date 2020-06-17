@@ -24,24 +24,34 @@ class Circle {
     this.radius = r;
     this.color = c;
   }
+
+  draw () {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 
+    2, false);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  update () {
+    this.draw();
+  }
 }
 
-draw() {
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 
-  2, false);
-  ctxfillStyle = this.color;
-  ctx.fill();
-  ctx.close
-}
+// make the yellow dot appear, theres some small issue making it not show up
 
+let player;
 function Start () {
-
+  player = new Circle(0, canvas.height/2, 30, 
+    '#FFCE00');
 } 
 
 function Update () {
   requestAnimationFrame(Update);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  player.update();
 }
 
 Start();

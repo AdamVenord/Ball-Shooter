@@ -54,6 +54,10 @@ function Shoot () {
   let vx = mouse.x - bullet.x;
   let vy = mouse.y - bullet.y;
   let speed = 6;
+
+  let dist = Math.sqrt(vx * vx + vy + vy);
+  bullet.dx = vx / dist;
+  bullet.dy = vy / dist;
 }
 
 let player;

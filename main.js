@@ -1,8 +1,8 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
-let point = 0;
-let enemies =[];
+let points = 0;
+let enemies = [];
 let bullets = [];
 
 let mouse = {
@@ -16,6 +16,13 @@ addEventListener('mousemove', (event) => {
 
   console.log(mouse);
 });
+
+addEventListener('Click', Shoot);
+addEventListener("keypress", (event) => {
+  if (event.code == "Space") {
+    Shoot();
+  }
+})
 
 class Circle {
   constuctor(x, y, r, c) {
@@ -39,12 +46,20 @@ class Circle {
   }
 }
 
-// make the yellow dot appear, theres some small issue making it not show up
+function Shoot () {
+  let bullet = new Circle(player.x, player.y,  15, "white");
+  // bullet.mx = mouse.x;
+  // bullet.my = mouse.y;
+
+  let vx = mouse.x - bullet.x;
+  let vy = mouse.y - bullet.y;
+  let speed = 6;
+}
 
 let player;
 function Start () {
   player = new Circle(0, canvas.height/2, 30, 
-    '#FFCE00');
+    '#FFFF00');
 } 
 
 function Update () {

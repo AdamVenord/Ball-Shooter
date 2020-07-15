@@ -58,6 +58,11 @@ function Shoot () {
   let dist = Math.sqrt(vx * vx + vy + vy);
   bullet.dx = vx / dist;
   bullet.dy = vy / dist;
+
+  bullet.dx *= speed;
+  bullet.dy *= speed;
+
+  bullet.push(bullet);
 }
 
 let player;
@@ -69,7 +74,15 @@ function Start () {
 function Update () {
   requestAnimationFrame(Update);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //bullets
+  for (let i = 0; i < bullets.length; i++) {
+    let bullet = bullets[i];
 
+    bullet.x *= bullet.dx;
+    bullet.y *= bullet.dy;
+
+    bullet.update();
+  }
   player.update();
 }
 

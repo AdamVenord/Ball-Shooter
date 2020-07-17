@@ -81,6 +81,15 @@ function Update () {
     bullet.x *= bullet.dx;
     bullet.y *= bullet.dy;
 
+    if (bullet.x < 0 || 
+      bullet.x > canvas.width ||
+      bullet.y < 0 ||
+      bullet.y > canvas.height 
+      ) {
+        bullets.splice(i, 1);
+        console.log(bullets);
+      }
+
     bullet.update();
   }
   player.update();
